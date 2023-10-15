@@ -1,0 +1,65 @@
+{% extends "base.html" %} {% block title %}SSIS{% endblock %}
+
+{% block content %}
+<h1 align ="center">Students</h1>
+<a href="/student"><button = class="btn btn-secondary">Back</button></a>
+<form method ="POST">
+    <h3>Add Student</h3>
+    <div class="form-group">
+        <label for="id">ID Number</label>
+        <input 
+        type="text" 
+        class="form-control" 
+        id="id"
+        name="id" 
+        placeholder="Enter ID number">
+    </div>
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input 
+        type="text" 
+        class="form-control" 
+        id="firstName"
+        name="firstName" 
+        placeholder="Enter First Name">
+    </div>
+    <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input 
+        type="text" 
+        class="form-control" 
+        id="lastName"
+        name="lastName" 
+        placeholder="Enter Last Name">
+    </div>
+    <div class="form-group">
+        <label for="course">Course</label>
+        <input 
+        type="text" 
+        class="form-control" 
+        id="course"
+        name="course" 
+        placeholder="Enter Course">
+    </div>
+    <div class="form-group">
+        <label for="year">Year Level</label>
+        <input 
+        type="number" 
+        class="form-control" 
+        id="year"
+        name="year" 
+        placeholder="Enter Year Level">
+    </div>
+    <div class="form-group">
+        <label for="gender">Gender</label>
+        <input 
+        type="text" 
+        class="form-control" 
+        id="gender"
+        name="gender" 
+        placeholder="Enter Gender">
+    </div>
+    <br />
+    <button type = "Submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}
