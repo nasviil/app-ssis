@@ -8,6 +8,7 @@ flask = "*"
 flask-login = "*"
 flask-sqlalchemy = "*"
 python-dotenv = "*"
+mysql-connector = "*"
 
 [dev-packages]
 
