@@ -1,8 +1,15 @@
-from flask import Blueprint
+from flask import Blueprint, render_template, redirect, url_for
 
 views = Blueprint('views', __name__)
 
-@views.route('/')
-def home():
-    return "<h1>Test</h1>"
+@views.route('/student')
+def student():
+    return render_template("student.html")
 
+@views.route('/course')
+def course():
+    return render_template("course.html")
+
+@views.route('/')
+def index():
+    return redirect(url_for('views.student'))
