@@ -1,0 +1,23 @@
+.NAVBAR ul {
+	list-style-type: none;
+	background-color: grey;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+}
+
+.NAVBAR a {
+	color: white;
+	text-decoration: none;
+	padding: 15px;
+	display: block;
+	text-align: center;
+}
+
+.NAVBAR a:hover {
+	background-color: rgb(46, 45, 45);
+}
+
+.NAVBAR li {
+	float: left;
+}

@@ -25,37 +25,9 @@
 		<title>{% block title %}SSIS{% endblock %}</title>
 	</head>
 	<body>
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-			<div
-				class="collapse navbar-collapse"
-				id="navbar"
-			>
-				<div class="navbar-nav justify-content-center">
-					<a
-						class="nav-item nav-link"
-						id="student"
-						href="/student"
-						>Students</a
-					>
-					<a
-						class="nav-item nav-link"
-						id="course"
-						href="/course"
-						>Courses</a
-					>
-					<a
-						class="nav-item nav-link"
-						id="college"
-						href="/college"
-						>Colleges</a
-					>
-				</div>
-			</div>
-		</nav>
-
-		{% with messages = get_flashed_messages(with_categories=true) %} {% if
-		messages %} {% for category, message in messages %} {% if category ==
-		error%}
+		{% include 'partials/nav.html' %} {% with messages =
+		get_flashed_messages(with_categories=true) %} {% if messages %} {% for
+		category, message in messages %} {% if category == error%}
 		<div
 			class="alert alert-danger alert-dismissible fade show"
 			role="alert"
