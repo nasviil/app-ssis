@@ -1,38 +1,52 @@
-{% extends "base.html" %} {% block title %}SSIS{% endblock %}
-
-{% block content %}
-<h1 align ="center">Courses</h1>
-<a href="/college"><button = class="btn btn-secondary">Back</button></a>
-<form method ="POST">
-    <h3>Add Course</h3>
-    <div class="form-group">
-        <label for="courseCode">Course Code</label>
-        <input 
-        type="text" 
-        class="form-control" 
-        id="courseCode"
-        name="courseCode" 
-        placeholder="Enter Course Code">
-    </div>
-    <div class="form-group">
-        <label for="courseName">Course Name</label>
-        <input 
-        type="text" 
-        class="form-control" 
-        id="courseName"
-        name="courseName" 
-        placeholder="Enter Course Name">
-    </div>
-    <div class="form-group">
-        <label for="collegeCourse">College</label>
-        <input 
-        type="text" 
-        class="form-control" 
-        id="collegeCourse"
-        name="collegeCourse" 
-        placeholder="Enter College">
-    </div>
-    <br />
-    <button type = "Submit" class="btn btn-primary">Submit</button>
+{% extends "base.html" %} {% block title %}SSIS{% endblock %} {% block content
+%}
+<h1 align="center">Courses</h1>
+<a href="/college"
+	><button
+		="class"
+		="btn btn-secondary"
+	>
+		Back
+	</button></a
+>
+<form method="POST">
+	<h3>Add Course</h3>
+	<div class="form-group">
+		<label for="courseCode">Course Code</label>
+		<input
+			type="text"
+			class="form-control"
+			id="courseCode"
+			name="courseCode"
+			placeholder="Enter Course Code"
+		/>
+	</div>
+	<div class="form-group">
+		<label for="courseName">Course Name</label>
+		<input
+			type="text"
+			class="form-control"
+			id="courseName"
+			name="courseName"
+			placeholder="Enter Course Name"
+		/>
+	</div>
+	<div class="form-group">
+		<label for="collegeCourse">College</label>
+		<input
+			type="text"
+			class="form-control"
+			id="collegeCourse"
+			name="collegeCourse"
+			placeholder="Enter College"
+		/>
+	</div>
+	<br />
+	<button
+		type="Submit"
+		class="btn btn-primary"
+	>
+		Submit
+	</button>
 </form>
 {% endblock %}
