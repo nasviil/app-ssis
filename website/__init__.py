@@ -1,8 +1,13 @@
 from flask import Flask
+from os import getenv
+
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def create_app():
     app = Flask(__name__)
-    app.config['SECRET KEY']='super secret key'
+    app.config['SECRET_KEY']=getenv('SECRET_KEY')
 
     from .routes.home import home
     from .routes.student import student
