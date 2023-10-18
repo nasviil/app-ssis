@@ -12,5 +12,6 @@ def add_course():
         data = request.form
         print(data)
         flash('Course added.', category='success')
+        return render_template("page-course.html")
 
     return render_template("add-course.html")
