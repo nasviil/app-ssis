@@ -1,5 +1,5 @@
 * {
-	box-sizing: content-box;
+	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
 	background-color: #24252a;
@@ -35,12 +35,12 @@ h1 {
 	border-collapse: collapse;
 	margin: 25px 0;
 	min-width: 400px;
-	width: 100%; /* Set the table width to 100% */
+	width: 100%;
 	border-collapse: collapse;
 }
 
 .content-table thead th {
-	background-color: #0088a9;
+	background-color: #6750a5;
 	color: #ecf0f1;
 	text-align: left;
 	font-weight: bold;
@@ -84,6 +84,11 @@ header {
 	padding: 30px 10%;
 }
 
+.th-action {
+	min-width: 50px;
+	justify-content: right;
+}
+
 .NAVBAR {
 	list-style: none;
 }
@@ -98,12 +103,12 @@ header {
 }
 
 .NAVBAR li a:hover {
-	color: #0088a9;
+	color: #6750a5;
 }
 
 button {
 	padding: 9px 25px;
-	background-color: rgba(0, 136, 169, 1);
+	background-color: rgba(103, 80, 165, 1);
 	border: none;
 	border-radius: 50px;
 	cursor: pointer;
@@ -111,5 +116,30 @@ button {
 }
 
 button:hover {
-	background-color: rgba(0, 136, 169, 0.8);
+	background-color: rgba(103, 80, 165, 0.7);
+}
+
+.action-btn {
+	display: flex;
+	transition: all 0.3s ease 0s;
+	gap: 20px;
+	justify-content: right;
+}
+
+.action-link-edit,
+.action-link-delete {
+	display: table-cell; /* Treat action-link as a table cell */
+	padding: 5px 10px; /* Adjust padding for the buttons */
+	color: #ecf0f1;
+	cursor: pointer;
+	transition: all 0.3s ease 0s;
+	text-decoration: none;
+}
+
+.action-link-edit:hover {
+	color: #6750a5;
+}
+
+.action-link-delete:hover {
+	color: #6750a5;
 }
