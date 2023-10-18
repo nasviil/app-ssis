@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS college (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(256) UNIQUE NOT NULL,
+    code VARCHAR(16) UNIQUE NOT NULL
+);
+CREATE TABLE IF NOT EXISTS course (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(256) UNIQUE NOT NULL,
+    code VARCHAR(16) UNIQUE NOT NULL,
+    college_id INT,
+    FOREIGN KEY (college_id) REFERENCES college(id)
+);
+CREATE TABLE IF NOT EXISTS student (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id VARCHAR(16) UNIQUE NOT NULL,
+    first_name VARCHAR(256) NOT NULL,
+    last_name VARCHAR(256) NOT NULL,
+    gender VARCHAR(16) NOT NULL,
+    course_id INT,
+    FOREIGN KEY (course_id) REFERENCES course(id)
+);
