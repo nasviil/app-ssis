@@ -13,7 +13,13 @@ class College:
         cur = mysql.connection.cursor()
         cur.execute(INSERT_SQL, (self.id, self.name, self.code))
         mysql.connection.commit()
-        
+
+    def update(self):
+        UPDATE_SQL = f"UPDATE {self.__tablename__} SET name = %s, code = %s WHERE id = %s"
+        cur = mysql.connection.cursor()
+        cur.execute(UPDATE_SQL, (self.name, self.code, self.id))
+        mysql.connection.commit()
+
     @classmethod
     def get_colleges(cls):
         SELECT_SQL = f"SELECT * FROM {cls.__tablename__}"
