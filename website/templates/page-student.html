@@ -1,0 +1,40 @@
+{% extends "base.html" %} {% block title %}Students - SSIS{% endblock %} {%
+block content %}
+<h1
+	align="center"
+	style="color: #ecf0f1"
+>
+	Students
+</h1>
+<a href="/student/add"><button>Add Student</button></a>
+<br />
+<div class="container-table">
+	<table class="content-table">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Gender</th>
+				<th>Year Level</th>
+				<th>Course</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>2021-2143</td>
+				<td>Kent</td>
+				<td>Male</td>
+				<td>2nd Year</td>
+				<td>Computer Science</td>
+			</tr>
+			<tr>
+				<td>2021-2144</td>
+				<td>Another Name</td>
+				<td>Female</td>
+				<td>3rd Year</td>
+				<td>Mathematics</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+{% endblock %}

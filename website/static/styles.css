@@ -1,23 +1,115 @@
-.NAVBAR ul {
-	list-style-type: none;
-	background-color: grey;
-	padding: 0;
+* {
+	box-sizing: content-box;
 	margin: 0;
-	overflow: hidden;
+	padding: 0;
+	background-color: #24252a;
 }
 
-.NAVBAR a {
-	color: white;
+body {
+	background-color: #24252a;
+}
+
+.heading-add {
+	color: #ecf0f1;
+	padding: 10px 0px;
+}
+
+img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover; /* Maintain aspect ratio and fill the container */
+}
+
+h1 {
+	color: #ecf0f1;
+	align-content: center;
+}
+
+.container-table {
+	width: 100%;
+	height: 300px;
+}
+
+.content-table {
+	color: #ecf0f1;
+	border-collapse: collapse;
+	margin: 25px 0;
+	min-width: 400px;
+	width: 100%; /* Set the table width to 100% */
+	border-collapse: collapse;
+}
+
+.content-table thead th {
+	background-color: #0088a9;
+	color: #ecf0f1;
+	text-align: left;
+	font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+	padding: 12px 15px;
+}
+
+.content-table tbody tr {
+	border-bottom: 1px solid #dddddd;
+}
+
+li,
+a,
+button {
+	font-weight: 500;
+	font-size: 16px;
+	color: #ecf0f1;
 	text-decoration: none;
-	padding: 15px;
-	display: block;
-	text-align: center;
+}
+.form-group {
+	color: #ecf0f1;
 }
 
-.NAVBAR a:hover {
-	background-color: rgb(46, 45, 45);
+.form-control {
+	background-color: #24252a;
+	color: #ecf0f1;
+}
+
+.form-control:focus {
+	background-color: #24252a;
+	color: #ecf0f1;
+}
+
+header {
+	display: flex;
+	justify-content: flex-end;
+	align-items: left;
+	padding: 30px 10%;
+}
+
+.NAVBAR {
+	list-style: none;
 }
 
 .NAVBAR li {
-	float: left;
+	display: inline-block;
+	padding: 0px 20px;
+}
+
+.NAVBAR li a {
+	transition: all 0.3s ease 0s;
+}
+
+.NAVBAR li a:hover {
+	color: #0088a9;
+}
+
+button {
+	padding: 9px 25px;
+	background-color: rgba(0, 136, 169, 1);
+	border: none;
+	border-radius: 50px;
+	cursor: pointer;
+	transition: all 0.3s ease 0s;
+}
+
+button:hover {
+	background-color: rgba(0, 136, 169, 0.8);
 }

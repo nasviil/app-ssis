@@ -1,16 +1,14 @@
 {% extends "base.html" %} {% block title %}SSIS{% endblock %} {% block content
 %}
-<h1 align="center">Courses</h1>
-<a href="/college"
-	><button
-		="class"
-		="btn btn-secondary"
-	>
-		Back
-	</button></a
+<h1
+	align="center"
+	style="color: #ecf0f1"
 >
+	Courses
+</h1>
+<a href="/course"><button>Back</button></a>
 <form method="POST">
-	<h3>Add Course</h3>
+	<h3 class="heading-add">Add Course</h3>
 	<div class="form-group">
 		<label for="courseCode">Course Code</label>
 		<input
@@ -42,11 +40,6 @@
 		/>
 	</div>
 	<br />
-	<button
-		type="Submit"
-		class="btn btn-primary"
-	>
-		Submit
-	</button>
+	<button type="Submit">Submit</button>
 </form>
 {% endblock %}

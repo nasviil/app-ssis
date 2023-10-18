@@ -1,0 +1,31 @@
+{% extends "base.html" %} {% block title %}SSIS{% endblock %} {% block content
+%}
+<h1
+	align="center"
+	style="color: #ecf0f1"
+>
+	Courses
+</h1>
+<a href="/course/add"><button>Add Course</button></a>
+<table class="content-table">
+	<thead>
+		<tr>
+			<th>Course Code</th>
+			<th>Course Name</th>
+			<th>College</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>CS</td>
+			<td>Computer Science</td>
+			<td>CCS</td>
+		</tr>
+		<tr>
+			<td>IT</td>
+			<td>Information Technology</td>
+			<td>CCS</td>
+		</tr>
+	</tbody>
+</table>
+{% endblock %}

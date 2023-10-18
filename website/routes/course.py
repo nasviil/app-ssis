@@ -4,13 +4,13 @@ course = Blueprint('course', __name__)
 
 @course.route('/')
 def course_home():
-    return render_template("course.html")
+    return render_template("page-course.html")
 
 @course.route('/add', methods=['GET', 'POST'])
 def add_course():
     if request.method =='POST':
         data = request.form
         print(data)
-        flash('Student added.', category='success')
+        flash('Course added.', category='success')
 
-    return render_template("course-add.html")
+    return render_template("add-course.html")

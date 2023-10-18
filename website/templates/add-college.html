@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% block title %}SSIS{% endblock %} {% block content
+%}
+<h1
+	align="center"
+	style="color: #ecf0f1"
+>
+	Colleges
+</h1>
+<a href="/college"><button>Back</button></a>
+<form method="POST">
+	<h3 class="heading-add">Add College</h3>
+	<div class="form-group">
+		<label for="code">College Code</label>
+		<input
+			type="text"
+			class="form-control"
+			id="code"
+			name="code"
+			placeholder="Enter College Code"
+		/>
+	</div>
+	<div class="form-group">
+		<label for="name">College Name</label>
+		<input
+			type="text"
+			class="form-control"
+			id="name"
+			name="name"
+			placeholder="Enter College Name"
+		/>
+	</div>
+	<br />
+	<button type="Submit">Submit</button>
+</form>
+{% endblock %}

@@ -4,7 +4,7 @@ student = Blueprint('student', __name__)
 
 @student.route('/')
 def student_home():
-    return render_template("student.html")
+    return render_template("page-student.html")
 
 @student.route('/add', methods=['GET', 'POST'])
 def add_student():
@@ -13,4 +13,4 @@ def add_student():
         print(data)
         flash('Student added.', category='success')
 
-    return render_template("student-add.html")
+    return render_template("add-student.html")
