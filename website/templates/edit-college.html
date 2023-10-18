@@ -1,0 +1,46 @@
+{% extends "base.html" %} {% block title %}Edit College - SSIS{% endblock %} {%
+block content %}
+<h1
+	align="center"
+	style="color: #ecf0f1"
+>
+	Edit College
+</h1>
+<a href="/college"><button>Back</button></a>
+<form method="POST">
+	<input
+		type="hidden"
+		name="id"
+		value="{{ college.id }}"
+	/>
+	<div class="form-group">
+		<label for="code">College Code</label>
+		<input
+			type="text"
+			class="form-control"
+			id="code"
+			name="code"
+			placeholder="Enter College Code"
+			value="{{ college.code }}"
+		/>
+	</div>
+	<div class="form-group">
+		<label for="name">College Name</label>
+		<input
+			type="text"
+			class="form-control"
+			id="name"
+			name="name"
+			placeholder="College Name"
+			value="{{ college.name }}"
+		/>
+	</div>
+	<br />
+	<button
+		type="submit"
+		aria-label="Submit Edit"
+	>
+		Submit Edit
+	</button>
+</form>
+{% endblock %}

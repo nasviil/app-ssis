@@ -1,12 +1,13 @@
 {% extends "base.html" %} {% block title %}SSIS{% endblock %} {% block content
 %}
-<h1>Colleges</h1>
+<h1 align="center">Colleges</h1>
 <a href="/college/add"><button>Add College</button></a>
 <table class="content-table">
 	<thead>
 		<tr>
 			<th>College Name</th>
 			<th>College Code</th>
+			<th class="th-action"></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -14,6 +15,20 @@
 		<tr>
 			<td>{{ college.name }}</td>
 			<td>{{ college.code }}</td>
+			<td>
+				<span class="action-btn">
+					<a
+						class="action-link-edit"
+						href="edit/{{college.id}}"
+						>Edit</a
+					>
+					<a
+						class="action-link-delete"
+						href=""
+						>Delete</a
+					>
+				</span>
+			</td>
 		</tr>
 		{% endfor %}
 	</tbody>
