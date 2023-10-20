@@ -5,16 +5,16 @@
 <table class="content-table">
 	<thead>
 		<tr>
-			<th>College Name</th>
 			<th>College Code</th>
+			<th>College Name</th>
 			<th class="th-action"></th>
 		</tr>
 	</thead>
 	<tbody>
 		{% for college in colleges %}
 		<tr>
-			<td>{{ college.name }}</td>
 			<td>{{ college.code }}</td>
+			<td>{{ college.name }}</td>
 			<td>
 				<span class="action-btn">
 					<a
@@ -22,11 +22,23 @@
 						href="edit/{{college.id}}"
 						>Edit</a
 					>
-					<a
-						class="action-link-delete"
-						href=""
-						>Delete</a
+					<form
+						method="post"
+						action="/college/delete/{{ college.id }}"
 					>
+						<input
+							type="hidden"
+							name="confirmation"
+							value="confirmed"
+						/>
+						<button
+							type="button"
+							class="action-link-delete"
+							onclick="confirmDelete('{{ college.id }}')"
+						>
+							Delete
+						</button>
+					</form>
 				</span>
 			</td>
 		</tr>

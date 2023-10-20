@@ -7,20 +7,38 @@
 		<tr>
 			<th>Course Code</th>
 			<th>Course Name</th>
-			<th>College</th>
+			<th>Course College</th>
+			<th class="th-action"></th>
 		</tr>
 	</thead>
 	<tbody>
+		{% for course in courses %}
 		<tr>
-			<td>CS</td>
-			<td>Computer Science</td>
-			<td>CCS</td>
+			<td>{{ course.code }}</td>
+			<td>{{ course.name }}</td>
+			<td>{{ course.college_name }}</td>
+			<td>
+				<span class="action-btn">
+					<a
+						class="action-link-edit"
+						href="edit/{{course.id}}"
+						>Edit</a
+					>
+					<form
+						method="post"
+						action="/course/delete/{{ course.id }}"
+					>
+						<button
+							type="submit"
+							class="action-link-delete"
+						>
+							Delete
+						</button>
+					</form>
+				</span>
+			</td>
 		</tr>
-		<tr>
-			<td>IT</td>
-			<td>Information Technology</td>
-			<td>CCS</td>
-		</tr>
+		{% endfor %}
 	</tbody>
 </table>
 {% endblock %}

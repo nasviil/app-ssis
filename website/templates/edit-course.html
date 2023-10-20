@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}SSIS{% endblock %}
+{% block content %}
+<h1 align="center">Edit Course</h1>
+<a href="/course"><button>Back</button></a>
+<form method="POST">
+    <div class="form-group">
+        <label for="courseCode">Course Code</label>
+        <input
+            type="text"
+            class="form-control"
+            id="code"
+            name="code"
+            placeholder="Enter Course Code"
+            value="{{ course.code }}"
+        />
+    </div>
+    <div class="form-group">
+        <label for="courseName">Course Name</label>
+        <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            placeholder="Enter Course Name"
+            value="{{ course.name }}"
+        />
+    </div>
+    <div class="form-group">
+        <label for="collegeCourse">College</label>
+        <select class="form-control" id="college" name="college">
+            {% for college in colleges %}
+                <option value="{{ college.id }}"
+                    {% if college.id == course.college_id %} selected {% endif %}>
+                    {{ college.name }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+    <br />
+    <button type="Submit">Update</button>
+</form>
+{% endblock %}
