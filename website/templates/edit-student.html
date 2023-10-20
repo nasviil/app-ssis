@@ -3,7 +3,7 @@
 <h1 align="center">Students</h1>
 <a href="/student"><button>Back</button></a>
 <form method="POST">
-	<h3 class="heading-add">Add Student</h3>
+	<h3 class="heading-add">Edit Student</h3>
 	<div class="form-group">
 		<label for="id">ID Number</label>
 		<input
@@ -12,6 +12,7 @@
 			id="student_id"
 			name="student_id"
 			placeholder="Enter ID number"
+			value="{{ student.student_id }}"
 		/>
 	</div>
 	<div class="form-group">
@@ -22,6 +23,7 @@
 			id="firstName"
 			name="firstName"
 			placeholder="Enter First Name"
+			value="{{student.first_name}}"
 		/>
 	</div>
 	<div class="form-group">
@@ -32,6 +34,7 @@
 			id="lastName"
 			name="lastName"
 			placeholder="Enter Last Name"
+			value="{{student.last_name}}"
 		/>
 	</div>
 	<div class="form-group">
@@ -41,8 +44,8 @@
 			id="gender"
 			name="gender"
 		>
-			<option value="Male">Male</option>
-			<option value="Female">Female</option>
+		<option value="Male" {% if student.gender == 'Male' %}selected{% endif %}>Male</option>
+		<option value="Female" {% if student.gender == 'Female' %}selected{% endif %}>Female</option>
 		</select>
 	</div>
 	<div class="form-group">
@@ -52,10 +55,10 @@
 			id="year"
 			name="year"
 		>
-			<option value="1">1</option>
-			<option value="2">2</option>
-			<option value="3">3</option>
-			<option value="4">4</option>
+        <option value="1" {% if student.year == 1 %}selected{% endif %}>1</option>
+        <option value="2" {% if student.year == 2 %}selected{% endif %}>2</option>
+        <option value="3" {% if student.year == 3 %}selected{% endif %}>3</option>
+        <option value="4" {% if student.year == 4 %}selected{% endif %}>4</option>
 		</select>
 	</div>
 	<div class="form-group">
@@ -66,7 +69,7 @@
 			name="course"
 		>
 			{% for course in courses %}
-			<option value="{{ course.id }}">{{ course.name }}</option>
+			<option value="{{ course.id }}"{% if course.id == student.course_id %} selected {% endif %}>{{ course.name }}</option>
 			{% endfor %}
 		</select>
 	</div>
