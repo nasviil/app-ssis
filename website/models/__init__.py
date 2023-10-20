@@ -1,1 +1,1 @@
-from . import collegedb
+from . import collegedb, coursedb, studentdb
