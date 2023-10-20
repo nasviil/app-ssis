@@ -3,7 +3,7 @@ from website import mysql
 class Course:
     __tablename__ = 'course'
 
-    def __init__(self, name=None, code=None, id=None, college_id=None):
+    def __init__(self, id=None, name=None, code=None, college_id=None):
         self.id = id
         self.name = name
         self.code = code
@@ -57,9 +57,17 @@ class Course:
         return colleges
     
     @classmethod
-    def is_unique(cls, name, code, college_id):
+    def is_course_unique(cls, name, code, college_id):
         SELECT_UNIQUE_SQL = "SELECT id FROM course WHERE name = %s AND code = %s AND college_id = %s"
         cur = mysql.connection.cursor()
         cur.execute(SELECT_UNIQUE_SQL, (name, code, college_id))
         result = cur.fetchone()
         return result is None
+    
+    @classmethod
+    def search_courses(cls, query):
+        SELECT_SQL = f"SELECT * FROM {cls.__tablename__} WHERE name LIKE %s OR code LIKE %s"
+        cur = mysql.connection.cursor(dictionary=True)
+        cur.execute(SELECT_SQL, (f'%{query}%', f'%{query}%'))
+        courses = cur.fetchall()
+        return courses

@@ -1,7 +1,27 @@
 {% extends "base.html" %} {% block title %}Students - SSIS{% endblock %} {%
 block content %}
 <h1 align="center">Students</h1>
-<a href="/student/add"><button>Add Student</button></a>
+<div style="display: flex; justify-content: space-between">
+	<div>
+		<a href="/student/add"><button>Add Student</button></a>
+	</div>
+	<div style="display: flex; align-items: center">
+		<form
+			style="color: #ecf0f1"
+			action="/student/search"
+			method="get"
+		>
+			<input
+				style="color: #ecf0f1"
+				type="text"
+				name="query"
+				placeholder="Search by name or code"
+			/>
+			<button type="submit">Search</button>
+			<a href="/student"><button>Clear</button></a>
+		</form>
+	</div>
+</div>
 <table class="content-table">
 	<thead>
 		<tr>

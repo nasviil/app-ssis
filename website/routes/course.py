@@ -19,19 +19,21 @@ def add_course():
         if not name or not code:
             flash('Name and code cannot be empty.', category='error')
         else:
-            if Course.is_unique(name, code, college_id):
-                course_query = Course(
-                    name=name,
-                    code=code,
-                    college_id=college_id
-                )
-                course_query.insert()
-                flash('Course added.', category='success')
-                return redirect(url_for('course.course_home'))
-            else:
+            if not Course.is_course_unique(name, code, college_id):
                 flash('Course with the same name and code already exists for this college.', category='error')
-
-    # Fetch the list of colleges from the database
+            else:
+                try:
+                    course_query = Course(
+                        name=name,
+                        code=code,
+                        college_id=college_id
+                    )
+                    course_query.insert()
+                    flash('Course added.', category='success')
+                    return redirect(url_for('course.course_home'))
+                except Exception as e:
+                    flash('Course with the same name or code already exists.', category='error')
+    
     colleges = Course.get_colleges()
 
     return render_template("add-course.html", colleges=colleges)
@@ -46,14 +48,17 @@ def edit_course(id):
         if not name or not code:
             flash('Name and code cannot be empty.', category='error')
         else:
-            if Course.is_unique(name, code, college_id):
-                # Update the existing course
-                course_query = Course(id=id, name=name, code=code, college_id=college_id)
-                course_query.update()
-                flash('Course updated.', category='success')
-                return redirect(url_for('course.course_home'))
-            else:
+            if not Course.is_course_unique(name, code, college_id):
                 flash('Course with the same name and code already exists for this college.', category='error')
+            else:
+                try:
+                    course_query = Course(id=id, name=name, code=code, college_id=college_id)
+                    course_query.update()
+                    flash('Course updated.', category='success')
+                    return redirect(url_for('course.course_home'))
+                except Exception as e:
+                    flash('Course with the same name or code already exists.', category='error')
+
 
     original_course = None
     courses=Course.get_courses_with_college()
@@ -74,4 +79,18 @@ def delete_course(id):
     course_query = Course(id=id)
     course_query.delete()
     flash('course deleted.', category='success')
-    return redirect(url_for('course.course_home'))  # Redirect to the course home page
+    return redirect(url_for('course.course_home'))
+
+@course.route('/search', methods=['GET'])
+def search_course():
+    query = request.args.get('query')
+
+    if not query:
+        return redirect(url_for('course.course_home'))
+
+    courses = course_model.search_courses(query)
+
+    if not courses:
+        flash('No results found for the search query.', category='info')
+
+    return render_template('page-course.html', courses=courses)
