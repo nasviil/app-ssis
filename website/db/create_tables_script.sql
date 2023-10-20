@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS student (
     first_name VARCHAR(256) NOT NULL,
     last_name VARCHAR(256) NOT NULL,
     gender VARCHAR(16) NOT NULL,
+    year INT NOT NULL,
     course_id INT,
     FOREIGN KEY (course_id) REFERENCES course(id)
 );
