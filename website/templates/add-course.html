@@ -1,11 +1,6 @@
 {% extends "base.html" %} {% block title %}SSIS{% endblock %} {% block content
 %}
-<h1
-	align="center"
-	style="color: #ecf0f1"
->
-	Courses
-</h1>
+<h1 align="center">Courses</h1>
 <a href="/course"><button>Back</button></a>
 <form method="POST">
 	<h3 class="heading-add">Add Course</h3>
@@ -14,8 +9,8 @@
 		<input
 			type="text"
 			class="form-control"
-			id="courseCode"
-			name="courseCode"
+			id="code"
+			name="code"
 			placeholder="Enter Course Code"
 		/>
 	</div>
@@ -24,20 +19,22 @@
 		<input
 			type="text"
 			class="form-control"
-			id="courseName"
-			name="courseName"
+			id="name"
+			name="name"
 			placeholder="Enter Course Name"
 		/>
 	</div>
 	<div class="form-group">
 		<label for="collegeCourse">College</label>
-		<input
-			type="text"
+		<select
 			class="form-control"
-			id="collegeCourse"
-			name="collegeCourse"
-			placeholder="Enter College"
-		/>
+			id="college"
+			name="college"
+		>
+			{% for college in colleges %}
+			<option value="{{ college.id }}">{{ college.name }}</option>
+			{% endfor %}
+		</select>
 	</div>
 	<br />
 	<button type="Submit">Submit</button>
