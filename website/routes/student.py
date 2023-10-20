@@ -13,4 +13,4 @@ def add_student():
         print(data)
         flash('Student added.', category='success')
 
-    return render_template("page-student.html")
+    return render_template("add-student.html")
