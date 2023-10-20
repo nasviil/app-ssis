@@ -40,7 +40,7 @@ h1 {
 }
 
 .content-table thead th {
-	background-color: #6750a5;
+	background-color: #0088a9;
 	color: #ecf0f1;
 	text-align: left;
 	font-weight: bold;
@@ -52,7 +52,7 @@ h1 {
 }
 
 .content-table tbody tr {
-	border-bottom: 1px solid #dddddd;
+	border-bottom: 1px solid #313238;
 }
 
 li,
@@ -103,12 +103,12 @@ header {
 }
 
 .NAVBAR li a:hover {
-	color: #6750a5;
+	color: #0088a9;
 }
 
 button {
 	padding: 9px 25px;
-	background-color: rgba(103, 80, 165, 1);
+	background-color: rgba(0, 136, 169, 1);
 	border: none;
 	border-radius: 50px;
 	cursor: pointer;
@@ -116,7 +116,7 @@ button {
 }
 
 button:hover {
-	background-color: rgba(103, 80, 165, 0.7);
+	background-color: rgba(0, 136, 169, 0.8);
 }
 
 .action-btn {
@@ -134,12 +134,9 @@ button:hover {
 	cursor: pointer;
 	transition: all 0.3s ease 0s;
 	text-decoration: none;
+	font-size: 14px;
 }
 
 .action-link-edit:hover {
-	color: #6750a5;
-}
-
-.action-link-delete:hover {
-	color: #6750a5;
+	color: #0088a9;
 }
