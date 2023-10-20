@@ -27,3 +27,9 @@ class College:
         cur.execute(SELECT_SQL)
         colleges = cur.fetchall()
         return colleges
+
+    def delete(self):
+        DELETE_SQL = f"DELETE FROM {self.__tablename__} WHERE id = %s"
+        cur = mysql.connection.cursor()
+        cur.execute(DELETE_SQL, (self.id,))
+        mysql.connection.commit()
