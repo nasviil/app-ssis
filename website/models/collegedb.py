@@ -9,9 +9,9 @@ class College:
         self.code = code
 
     def insert(self):
-        INSERT_SQL = f"INSERT INTO {self.__tablename__} (id, name, code) VALUES (%s, %s, %s)"
+        INSERT_SQL = f"INSERT INTO {self.__tablename__} (name, code) VALUES (%s, %s)"
         cur = mysql.connection.cursor()
-        cur.execute(INSERT_SQL, (self.id, self.name, self.code))
+        cur.execute(INSERT_SQL, (self.name, self.code))
         mysql.connection.commit()
 
     def update(self):

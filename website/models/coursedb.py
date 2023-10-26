@@ -66,7 +66,7 @@ class Course:
     
     @classmethod
     def search_courses(cls, query):
-        SELECT_SQL = f"SELECT * FROM {cls.__tablename__} WHERE name LIKE %s OR code LIKE %s"
+        SELECT_SQL = f"SELECT * FROM {cls.__tablename__} LEFT JOIN college ON course.college_id = college.id WHERE name LIKE %s OR code LIKE %s OR college.name LIKE %s"
         cur = mysql.connection.cursor(dictionary=True)
         cur.execute(SELECT_SQL, (f'%{query}%', f'%{query}%'))
         courses = cur.fetchall()
