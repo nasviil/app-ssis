@@ -30,6 +30,7 @@ block content %}
 			<th>Gender</th>
 			<th>Year</th>
 			<th>Course</th>
+			<th>College</th>
 			<th class="th-action"></th>
 		</tr>
 	</thead>
@@ -41,6 +42,7 @@ block content %}
 			<td>{{ student.gender }}</td>
 			<td>{{ student.year }}</td>
 			<td>{{ student.course_name }}</td>
+			<td>{{ student.college_code }}</td>
 			<td>
 				<span class="action-btn">
 					<a
@@ -53,8 +55,9 @@ block content %}
 						action="/student/delete/{{ student.id }}"
 					>
 						<button
-							type="submit"
+							type="button"
 							class="action-link-delete"
+							onclick="confirmDeleteStudent('{{ student.id }}')"
 						>
 							Delete
 						</button>
