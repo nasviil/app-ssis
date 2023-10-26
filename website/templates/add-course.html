@@ -31,6 +31,13 @@
 			id="college"
 			name="college"
 		>
+			<option
+				value=""
+				disabled
+				selected
+			>
+				--Select College--
+			</option>
 			{% for college in colleges %}
 			<option value="{{ college.id }}">{{ college.name }}</option>
 			{% endfor %}

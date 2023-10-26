@@ -23,42 +23,58 @@
 	</head>
 	<body>
 		<div>{% include 'partials/nav.html' %}</div>
-{% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-        {% for category, message in messages %}
-            {% if category == 'error' %}
-                <div class="alert alert-danger alert-dismissible fade show" role="alert" id="error-alert">
-                    {{ message }}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <script>
-                    // Auto-hide the error message after 2 seconds
-                    setTimeout(function() {
-                        var errorAlert = document.getElementById("error-alert");
-                        if (errorAlert) {
-                            errorAlert.style.display = 'none';
-                        }
-                    }, 2000); // 2 seconds
-                </script>
-            {% else %}
-                <div class="alert alert-success alert-dismissible fade show" role="alert" id="success-alert">
-                    {{ message }}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <script>
-                    // Auto-hide the success message after 2 seconds
-                    setTimeout(function() {
-                        var successAlert = document.getElementById("success-alert");
-                        if (successAlert) {
-                            successAlert.style.display = 'none';
-                        }
-                    }, 2000); // 2 seconds
-                </script>
-</div>
+		{% with messages = get_flashed_messages(with_categories=true) %} {% if
+		messages %} {% for category, message in messages %} {% if category ==
+		'error' %}
+		<div
+			class="alert alert-danger alert-dismissible fade show"
+			role="alert"
+			id="error-alert"
+		>
+			{{ message }}
+			<button
+				type="button"
+				class="close"
+				data-dismiss="alert"
+				aria-label="Close"
+			>
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<script>
+			// Auto-hide the error message after 2 seconds
+			setTimeout(function () {
+				var errorAlert = document.getElementById("error-alert");
+				if (errorAlert) {
+					errorAlert.style.display = "none";
+				}
+			}, 2000); // 2 seconds
+		</script>
+		{% else %}
+		<div
+			class="alert alert-success alert-dismissible fade show"
+			role="alert"
+			id="success-alert"
+		>
+			{{ message }}
+			<button
+				type="button"
+				class="close"
+				data-dismiss="alert"
+				aria-label="Close"
+			>
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<script>
+			// Auto-hide the success message after 2 seconds
+			setTimeout(function () {
+				var successAlert = document.getElementById("success-alert");
+				if (successAlert) {
+					successAlert.style.display = "none";
+				}
+			}, 2000); // 2 seconds
+		</script>
 		{% endif %} {% endfor %} {% endif %} {% endwith %}
 		<div class="container">
 			<div>{% block content %}{% endblock %}</div>
@@ -79,11 +95,45 @@
 			crossorigin="anonymous"
 		></script>
 		<script>
-			function confirmDelete(collegeId) {
-				if (confirm("Are you sure you want to delete this college?")) {
+			function confirmDeleteCollege(collegeId) {
+				if (
+					confirm(
+						"Are you sure you want to delete this college? All courses and students in this college will also be deleted."
+					)
+				) {
 					// If the user confirms, submit the delete form
 					document
 						.querySelector(`form[action="/college/delete/${collegeId}"]`)
+						.submit();
+				} else {
+					// If the user cancels, return false to prevent the form submission
+					return false;
+				}
+			}
+		</script>
+		<script>
+			function confirmDeleteCourse(courseId) {
+				if (
+					confirm(
+						"Are you sure you want to delete this course? All students in this course will also be deleted."
+					)
+				) {
+					// If the user confirms, submit the delete form
+					document
+						.querySelector(`form[action="/course/delete/${courseId}"]`)
+						.submit();
+				} else {
+					// If the user cancels, return false to prevent the form submission
+					return false;
+				}
+			}
+		</script>
+		<script>
+			function confirmDeleteStudent(studentId) {
+				if (confirm("Are you sure you want to delete this student?")) {
+					// If the user confirms, submit the delete form
+					document
+						.querySelector(`form[action="/student/delete/${studentId}"]`)
 						.submit();
 				} else {
 					// If the user cancels, return false to prevent the form submission

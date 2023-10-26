@@ -49,8 +49,9 @@
 						action="/course/delete/{{ course.id }}"
 					>
 						<button
-							type="submit"
+							type="button"
 							class="action-link-delete"
+							onclick="confirmDeleteCourse('{{ course.id }}')"
 						>
 							Delete
 						</button>
