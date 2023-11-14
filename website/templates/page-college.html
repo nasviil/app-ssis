@@ -22,47 +22,49 @@
 		</form>
 	</div>
 </div>
-<table class="content-table">
-	<thead>
-		<tr>
-			<th>College Code</th>
-			<th>College Name</th>
-			<th class="th-action"></th>
-		</tr>
-	</thead>
-	<tbody>
-		{% for college in colleges %}
-		<tr>
-			<td>{{ college.code }}</td>
-			<td>{{ college.name }}</td>
-			<td>
-				<span class="action-btn">
-					<a
-						class="action-link-edit"
-						href="edit/{{college.id}}"
-						>Edit</a
-					>
-					<form
-						method="post"
-						action="/college/delete/{{ college.id }}"
-					>
-						<input
-							type="hidden"
-							name="confirmation"
-							value="confirmed"
-						/>
-						<button
-							type="button"
-							class="action-link-delete"
-							onclick="confirmDeleteCollege('{{ college.id }}')"
+<div class="table-container">
+	<table class="content-table">
+		<thead>
+			<tr>
+				<th>College Code</th>
+				<th>College Name</th>
+				<th class="th-action"></th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for college in colleges %}
+			<tr>
+				<td>{{ college.college_code }}</td>
+				<td>{{ college.college_name }}</td>
+				<td>
+					<span class="action-btn">
+						<a
+							class="action-link-edit"
+							href="edit/{{college.id}}"
+							>Edit</a
 						>
-							Delete
-						</button>
-					</form>
-				</span>
-			</td>
-		</tr>
-		{% endfor %}
-	</tbody>
-</table>
+						<form
+							method="post"
+							action="/college/delete/{{ college.id }}"
+						>
+							<input
+								type="hidden"
+								name="confirmation"
+								value="confirmed"
+							/>
+							<button
+								type="button"
+								class="action-link-delete"
+								onclick="confirmDeleteCollege('{{ college.id }}')"
+							>
+								Delete
+							</button>
+						</form>
+					</span>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
 {% endblock %}

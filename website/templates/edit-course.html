@@ -9,10 +9,10 @@
         <input
             type="text"
             class="form-control"
-            id="code"
-            name="code"
+            id="course_code"
+            name="course_code"
             placeholder="Enter Course Code"
-            value="{{ course.code }}"
+            value="{{ course.course_code }}"
         />
     </div>
     <div class="form-group">
@@ -20,10 +20,10 @@
         <input
             type="text"
             class="form-control"
-            id="name"
-            name="name"
+            id="course_name"
+            name="course_name"
             placeholder="Enter Course Name"
-            value="{{ course.name }}"
+            value="{{ course.course_name }}"
         />
     </div>
     <div class="form-group">
@@ -32,7 +32,7 @@
             {% for college in colleges %}
                 <option value="{{ college.id }}"
                     {% if college.id == course.college_id %} selected {% endif %}>
-                    {{ college.name }}
+                    {{ college.college_name }}
                 </option>
             {% endfor %}
         </select>

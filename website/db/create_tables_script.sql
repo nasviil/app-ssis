@@ -1,14 +1,14 @@
 CREATE TABLE IF NOT EXISTS college (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(256) UNIQUE NOT NULL,
-    code VARCHAR(16) UNIQUE NOT NULL
+    college_name VARCHAR(256) UNIQUE NOT NULL,
+    college_code VARCHAR(16) UNIQUE NOT NULL
 );
 CREATE TABLE IF NOT EXISTS course (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(256) UNIQUE NOT NULL,
-    code VARCHAR(16) UNIQUE NOT NULL,
+    course_name VARCHAR(256) UNIQUE NOT NULL,
+    course_code VARCHAR(16) UNIQUE NOT NULL,
     college_id INT,
-    FOREIGN KEY (college_id) REFERENCES college(id)
+    FOREIGN KEY (college_id) REFERENCES college(id) ON DELETE CASCADE
 );
 CREATE TABLE IF NOT EXISTS student (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -18,5 +18,5 @@ CREATE TABLE IF NOT EXISTS student (
     gender VARCHAR(16) NOT NULL,
     year INT NOT NULL,
     course_id INT,
-    FOREIGN KEY (course_id) REFERENCES course(id)
+    FOREIGN KEY (course_id) REFERENCES course(id) ON DELETE CASCADE
 );

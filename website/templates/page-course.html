@@ -22,44 +22,46 @@
 		</form>
 	</div>
 </div>
-<table class="content-table">
-	<thead>
-		<tr>
-			<th>Course Code</th>
-			<th>Course Name</th>
-			<th>Course College</th>
-			<th class="th-action"></th>
-		</tr>
-	</thead>
-	<tbody>
-		{% for course in courses %}
-		<tr>
-			<td>{{ course.code }}</td>
-			<td>{{ course.name }}</td>
-			<td>{{ course.college_name }}</td>
-			<td>
-				<span class="action-btn">
-					<a
-						class="action-link-edit"
-						href="edit/{{course.id}}"
-						>Edit</a
-					>
-					<form
-						method="post"
-						action="/course/delete/{{ course.id }}"
-					>
-						<button
-							type="button"
-							class="action-link-delete"
-							onclick="confirmDeleteCourse('{{ course.id }}')"
+<div class="table-container">
+	<table class="content-table">
+		<thead>
+			<tr>
+				<th>Course Code</th>
+				<th>Course Name</th>
+				<th>Course College</th>
+				<th class="th-action"></th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for course in courses %}
+			<tr>
+				<td>{{ course.course_code }}</td>
+				<td>{{ course.course_name }}</td>
+				<td>{{ course.college_name }}</td>
+				<td>
+					<span class="action-btn">
+						<a
+							class="action-link-edit"
+							href="edit/{{course.id}}"
+							>Edit</a
 						>
-							Delete
-						</button>
-					</form>
-				</span>
-			</td>
-		</tr>
-		{% endfor %}
-	</tbody>
-</table>
+						<form
+							method="post"
+							action="/course/delete/{{ course.id }}"
+						>
+							<button
+								type="button"
+								class="action-link-delete"
+								onclick="confirmDeleteCourse('{{ course.id }}')"
+							>
+								Delete
+							</button>
+						</form>
+					</span>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
 {% endblock %}

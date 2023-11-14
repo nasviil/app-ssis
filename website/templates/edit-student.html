@@ -69,7 +69,7 @@
 			name="course"
 		>
 			{% for course in courses %}
-			<option value="{{ course.id }}"{% if course.id == student.course_id %} selected {% endif %}>{{ course.name }}</option>
+			<option value="{{ course.id }}"{% if course.id == student.course_id %} selected {% endif %}>{{ course.course_name }}</option>
 			{% endfor %}
 		</select>
 	</div>

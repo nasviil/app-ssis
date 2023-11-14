@@ -9,8 +9,8 @@
 		<input
 			type="text"
 			class="form-control"
-			id="code"
-			name="code"
+			id="course_code"
+			name="course_code"
 			placeholder="Enter Course Code"
 		/>
 	</div>
@@ -19,8 +19,8 @@
 		<input
 			type="text"
 			class="form-control"
-			id="name"
-			name="name"
+			id="course_name"
+			name="course_name"
 			placeholder="Enter Course Name"
 		/>
 	</div>
@@ -39,7 +39,7 @@
 				--Select College--
 			</option>
 			{% for college in colleges %}
-			<option value="{{ college.id }}">{{ college.name }}</option>
+			<option value="{{ college.id }}">{{ college.college_name }}</option>
 			{% endfor %}
 		</select>
 	</div>

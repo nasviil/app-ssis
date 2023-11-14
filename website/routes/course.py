@@ -12,20 +12,20 @@ def course_home():
 @course.route('/add', methods=['GET', 'POST'])
 def add_course():
     if request.method == 'POST':
-        name = request.form.get('name')
-        code = request.form.get('code')
+        course_name = request.form.get('course_name')
+        course_code = request.form.get('course_code')
         college_id = request.form.get('college')
 
-        if not name or not code:
+        if not course_name or not course_code:
             flash('Name and code cannot be empty.', category='error')
         else:
-            if not Course.is_course_unique(name, code, college_id):
+            if not Course.is_course_unique(course_name, course_code, college_id):
                 flash('Course with the same name and code already exists for this college.', category='error')
             else:
                 try:
                     course_query = Course(
-                        name=name,
-                        code=code,
+                        course_name=course_name,
+                        course_code=course_code,
                         college_id=college_id
                     )
                     course_query.insert()
@@ -41,18 +41,18 @@ def add_course():
 @course.route('/edit/<int:id>', methods=['GET', 'POST'])
 def edit_course(id):
     if request.method == 'POST':
-        name = request.form.get('name')
-        code = request.form.get('code')
+        course_name = request.form.get('course_name')
+        course_code = request.form.get('course_code')
         college_id = request.form.get('college')
 
-        if not name or not code:
+        if not course_name or not course_code:
             flash('Name and code cannot be empty.', category='error')
         else:
-            if not Course.is_course_unique(name, code, college_id):
+            if not Course.is_course_unique(course_name, course_code, college_id):
                 flash('Course with the same name and code already exists for this college.', category='error')
             else:
                 try:
-                    course_query = Course(id=id, name=name, code=code, college_id=college_id)
+                    course_query = Course(id=id, course_name=course_name, course_code=course_code, college_id=college_id)
                     course_query.update()
                     flash('Course updated.', category='success')
                     return redirect(url_for('course.course_home'))

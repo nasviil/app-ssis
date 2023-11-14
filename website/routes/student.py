@@ -40,7 +40,6 @@ def add_student():
                 except Exception as e:
                     flash('Student with the same id already exists', category='error')
 
-    # Fetch the list of colleges from the database
     courses = Student.get_courses()
 
     return render_template("add-student.html", courses=courses)
@@ -102,5 +101,3 @@ def search_student():
 
     if not students:
         flash('No results found for the search query.', category='info')
-
-    return render_template('page-student.html', students=students)
