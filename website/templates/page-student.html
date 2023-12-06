@@ -5,9 +5,9 @@ block content %}
 	<div>
 		<a href="/student/add"><button>Add Student</button></a>
 	</div>
-	<div style="display: flex; align-items: center">
+	<div style="display: flex; align-items: center; margin-bottom: 20px">
 		<form
-			style="color: #ecf0f1"
+			style="color: #ecf0f1; display: flex; gap: 1em"
 			action="/student/search"
 			method="get"
 		>
@@ -16,6 +16,7 @@ block content %}
 				type="text"
 				name="query"
 				placeholder="Search by name or code"
+				class="form-control"
 			/>
 			<button type="submit">Search</button>
 			<a href="/student"><button>Clear</button></a>
@@ -56,11 +57,18 @@ block content %}
 			<tr>
 				<td>
 					<div class="photo-container">
+						{% if student.cloudinary_url %}
+						<img
+							src="{{ student.cloudinary_url }}"
+							alt="Student Photo"
+						/>
+						{% else %}
 						<img
 							src="../static/src/375333820_9867881853281951_2714770517157118347_n.jpg"
 							alt="Student Photo"
 							class="student-photo"
 						/>
+						{% endif %}
 					</div>
 				</td>
 				<td>

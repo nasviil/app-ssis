@@ -10,6 +10,8 @@ mysql-connector = "*"
 flask = "==2.3.3"
 werkzeug = "==2.3.7"
 flask-mysql-connector = "*"
+cloudinary = "*"
+flask-cloudy = "*"
 
 [dev-packages]
 

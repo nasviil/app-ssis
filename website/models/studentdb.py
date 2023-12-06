@@ -3,7 +3,7 @@ from website import mysql
 class Student:
     __tablename__ = 'student'
 
-    def __init__(self, id=None, student_id=None, first_name=None, last_name=None, gender=None, year=None, course_id=None):
+    def __init__(self, id=None, student_id=None, first_name=None, last_name=None, gender=None, year=None, course_id=None, cloudinary_url=None):
         self.id = id
         self.student_id = student_id
         self.first_name = first_name
@@ -11,18 +11,20 @@ class Student:
         self.gender = gender
         self.year = year
         self.course_id = course_id
+        self.cloudinary_url = cloudinary_url
 
     def insert(self):
-        INSERT_SQL = f"INSERT INTO {self.__tablename__} (student_id, first_name, last_name, gender, year, course_id ) VALUES (%s, %s, %s, %s, %s, %s)"
+        INSERT_SQL = f"INSERT INTO {self.__tablename__} (student_id, first_name, last_name, gender, year, course_id, cloudinary_url) VALUES (%s, %s, %s, %s, %s, %s, %s)"
         cur = mysql.connection.cursor()
-        cur.execute(INSERT_SQL, (self.student_id, self.first_name, self.last_name, self.gender, self.year, self.course_id))
+        cur.execute(INSERT_SQL, (self.student_id, self.first_name, self.last_name, self.gender, self.year, self.course_id, self.cloudinary_url))
         mysql.connection.commit()
 
     def update(self):
-        UPDATE_SQL = f"UPDATE {self.__tablename__} SET student_id = %s, first_name = %s, last_name = %s, gender = %s, year = %s, course_id = %s WHERE id = %s"
+        UPDATE_SQL = f"UPDATE {self.__tablename__} SET student_id = %s, first_name = %s, last_name = %s, gender = %s, year = %s, course_id = %s, cloudinary_url = %s WHERE id = %s"
         cur = mysql.connection.cursor()
-        cur.execute(UPDATE_SQL, (self.student_id, self.first_name, self.last_name, self.gender, self.year, self.course_id, self.id))
+        cur.execute(UPDATE_SQL, (self.student_id, self.first_name, self.last_name, self.gender, self.year, self.course_id, self.cloudinary_url, self.id))
         mysql.connection.commit()
+
 
     def delete(self):
         DELETE_SQL = f"DELETE FROM {self.__tablename__} WHERE id = %s"
@@ -61,12 +63,22 @@ class Student:
         return courses
 
     @classmethod
-    def is_student_unique(cls, student_id, first_name, last_name, gender, year, course_id):
-        SELECT_UNIQUE_SQL = "SELECT id FROM student WHERE student_id = %s AND first_name = %s AND last_name = %s AND gender = %s AND year = %s AND course_id = %s"
+    def is_student_unique(cls, student_id, first_name, last_name, gender, year, course_id, current_student_id=None):
+        SELECT_UNIQUE_SQL = """
+            SELECT id FROM student
+            WHERE student_id = %s
+            AND first_name = %s
+            AND last_name = %s
+            AND gender = %s
+            AND year = %s
+            AND course_id = %s
+            AND (id != %s OR %s IS NULL)
+        """
         cur = mysql.connection.cursor()
-        cur.execute(SELECT_UNIQUE_SQL, (student_id, first_name, last_name, gender, year, course_id))
+        cur.execute(SELECT_UNIQUE_SQL, (student_id, first_name, last_name, gender, year, course_id, current_student_id, current_student_id))
         result = cur.fetchone()
         return result is None
+
     
     @classmethod
     def search_students(cls, query):

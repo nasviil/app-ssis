@@ -2,9 +2,17 @@
 %}
 <h1 align="center">Students</h1>
 <a href="/student"><button>Back</button></a>
-<form method="POST">
+<form method="POST" enctype="multipart/form-data">
 	<h3 class="heading-add">Edit Student</h3>
 	<div class="form-group">
+		<label for="student_photo">Photo</label>
+		<input
+			type="file"
+			name="student_photo"
+			class="form-control"
+			id="student_photo"
+			autocomplete="off"
+		/>
 		<label for="id">ID Number</label>
 		<input
 			type="text"
