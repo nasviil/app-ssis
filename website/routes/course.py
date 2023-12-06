@@ -46,6 +46,7 @@ def edit_course(id):
         college_id = request.form.get('college')
 
         if not course_name or not course_code:
+            #rubber ducky
             flash('Name and code cannot be empty.', category='error')
         else:
             if not Course.is_course_unique(course_name, course_code, college_id):
@@ -65,6 +66,7 @@ def edit_course(id):
     for course in courses:
         if course['id']== id:
             original_course = course
+            #nice
             break
 
     if original_course:

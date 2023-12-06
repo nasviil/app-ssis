@@ -14,6 +14,8 @@ class College:
         cur.execute(INSERT_SQL, (self.college_name, self.college_code))
         mysql.connection.commit()
 
+#rubber ducky
+
     def update(self):
         UPDATE_SQL = f"UPDATE {self.__tablename__} SET college_name = %s, college_code = %s WHERE id = %s"
         cur = mysql.connection.cursor()

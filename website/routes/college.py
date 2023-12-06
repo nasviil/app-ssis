@@ -38,6 +38,7 @@ def edit_college(id):
         if not college_name or not college_code:
             flash('Name and code cannot be empty.', category='error')
         else:
+            #rubber ducky
             if not College.is_college_unique(college_name, college_code):
                 flash('Course with the same name and code already exists for this college.', category='error')
             else:
@@ -65,6 +66,7 @@ def edit_college(id):
 
 @college.route('/delete/<int:id>', methods=['POST'])
 def delete_college(id):
+    #nice
     college_query = College(id=id)
     college_query.delete()
     flash('College deleted.', category='success')

@@ -35,6 +35,8 @@ class Course:
         courses = cur.fetchall()
         return courses
 
+#rubber ducky
+
     @classmethod
     def get_courses_with_college(cls):
         SELECT_SQL = f"""
@@ -63,6 +65,8 @@ class Course:
         cur.execute(SELECT_UNIQUE_SQL, (course_name, course_code, college_id))
         result = cur.fetchone()
         return result is None
+    
+    #nice
     
     @classmethod
     def search_courses(cls, query):

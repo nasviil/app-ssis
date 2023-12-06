@@ -10,6 +10,7 @@ class Student:
         self.last_name = last_name
         self.gender = gender
         self.year = year
+        #rubber ducky
         self.course_id = course_id
         self.cloudinary_url = cloudinary_url
 

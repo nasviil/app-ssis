@@ -42,13 +42,12 @@
 			</button>
 		</div>
 		<script>
-			// Auto-hide the error message after 2 seconds
 			setTimeout(function () {
 				var errorAlert = document.getElementById("error-alert");
 				if (errorAlert) {
 					errorAlert.style.display = "none";
 				}
-			}, 2000); // 2 seconds
+			}, 2000);
 		</script>
 		{% else %}
 		<div
@@ -67,13 +66,12 @@
 			</button>
 		</div>
 		<script>
-			// Auto-hide the success message after 2 seconds
 			setTimeout(function () {
 				var successAlert = document.getElementById("success-alert");
 				if (successAlert) {
 					successAlert.style.display = "none";
 				}
-			}, 2000); // 2 seconds
+			}, 2000);
 		</script>
 		{% endif %} {% endfor %} {% endif %} {% endwith %}
 		<div class="container">
@@ -101,12 +99,10 @@
 						"Are you sure you want to delete this college? All courses and students in this college will also be deleted."
 					)
 				) {
-					// If the user confirms, submit the delete form
 					document
 						.querySelector(`form[action="/college/delete/${collegeId}"]`)
 						.submit();
 				} else {
-					// If the user cancels, return false to prevent the form submission
 					return false;
 				}
 			}
@@ -118,12 +114,10 @@
 						"Are you sure you want to delete this course? All students in this course will also be deleted."
 					)
 				) {
-					// If the user confirms, submit the delete form
 					document
 						.querySelector(`form[action="/course/delete/${courseId}"]`)
 						.submit();
 				} else {
-					// If the user cancels, return false to prevent the form submission
 					return false;
 				}
 			}
@@ -131,12 +125,10 @@
 		<script>
 			function confirmDeleteStudent(studentId) {
 				if (confirm("Are you sure you want to delete this student?")) {
-					// If the user confirms, submit the delete form
 					document
 						.querySelector(`form[action="/student/delete/${studentId}"]`)
 						.submit();
 				} else {
-					// If the user cancels, return false to prevent the form submission
 					return false;
 				}
 			}

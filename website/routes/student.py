@@ -29,11 +29,9 @@ def add_student():
                 flash('Student with the same id already exists', category='error')
             else:
                 try:
-                    # Handle Cloudinary file upload
                     if 'student_photo' in request.files:
                         uploaded_file = request.files['student_photo']
                         if uploaded_file:
-                            # Upload the file to Cloudinary
                             cloudinary_response = cloudinary.uploader.upload(uploaded_file)
                             cloudinary_url = cloudinary_response.get('secure_url', '')
 
@@ -60,6 +58,7 @@ def add_student():
     courses = Student.get_courses()
 
     return render_template("add-student.html", courses=courses)
+    #rubber ducky
 
 @student.route('/edit/<int:id>', methods=['GET', 'POST'])
 def edit_student(id):
@@ -67,6 +66,7 @@ def edit_student(id):
         student_id = request.form.get('student_id')
         first_name = request.form.get('firstName')
         last_name = request.form.get('lastName')
+        #nice
         gender = request.form.get('gender')
         year = request.form.get('year')
         course_id = request.form.get('course')
@@ -78,14 +78,12 @@ def edit_student(id):
                 flash('Student with the same id already exists.', category='error')
             else:
                 try:
-                    # Handle Cloudinary file upload
                     if 'student_photo' in request.files:
                         uploaded_file = request.files['student_photo']
                         if uploaded_file:
                             cloudinary_response = cloudinary.uploader.upload(uploaded_file)
                             cloudinary_url = cloudinary_response.get('secure_url', '')
                         else:
-                            # If no new photo is provided, use the existing Cloudinary URL
                             cloudinary_url = original_student['cloudinary_url']
 
                     student_query = Student(

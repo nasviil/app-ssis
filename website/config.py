@@ -10,7 +10,6 @@ class Config:
     MYSQL_PASSWORD = getenv('MYSQL_PASSWORD')
     MYSQL_DATABASE = getenv('MYSQL_DATABASE')
 
-    # Cloudinary configuration
     CLOUDY_NAME = getenv('CLOUDY_NAME')
     CLOUDY_KEY = getenv('CLOUDY_KEY')
     CLOUDY_SECRET = getenv('CLOUDY_SECRET')
