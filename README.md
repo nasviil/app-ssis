@@ -40,5 +40,9 @@ To configure your local environment, follow these steps:
   MYSQL_USER=yourmysqluser
   MYSQL_PASSWORD=yourmysqlpassword
   MYSQL_DATABASE=yourmysqldatabase
+  CLOUDY_NAME=yourcloudinaryusername
+  CLOUDY_KEY=yourcloudinaryapikey
+  CLOUDY_SECRET=yourcloudinarysecretkey
+  CLOUDY_URL=yourcloudinaryurl
 ```
   Ensure you replace the placeholder values with your actual credentials.
