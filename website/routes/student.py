@@ -2,6 +2,12 @@ from flask import Blueprint, render_template, request, flash, redirect, url_for
 from ..models.studentdb import Student
 import cloudinary
 import cloudinary.uploader
+from werkzeug.utils import secure_filename
+
+ALLOWED_EXTENSIONS = {'png', 'jpg'}
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 student = Blueprint('student', __name__)
 student_model = Student()
@@ -31,7 +37,7 @@ def add_student():
                 try:
                     if 'student_photo' in request.files:
                         uploaded_file = request.files['student_photo']
-                        if uploaded_file:
+                        if uploaded_file and allowed_file(uploaded_file.filename):
                             cloudinary_response = cloudinary.uploader.upload(uploaded_file)
                             cloudinary_url = cloudinary_response.get('secure_url', '')
 
@@ -48,7 +54,7 @@ def add_student():
                             flash('Student added.', category='success')
                             return redirect(url_for('student.student_home'))
                         else:
-                            flash('Error uploading student photo.', category='error')
+                            flash('Invalid file format. Please upload a .png or .jpg image.', category='error')
                             return redirect(url_for('student.add_student'))
 
                 except Exception as e:
