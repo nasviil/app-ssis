@@ -92,8 +92,8 @@ h1 {
 
 .photo-container-add {
 	display: flex;
-	width: 350px;
-	height: 350px;
+	width: 300px;
+	height: 300px;
 	border-radius: 50%;
 	overflow: hidden;
 	justify-content: center;

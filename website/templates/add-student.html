@@ -24,6 +24,7 @@
 			class="form-control"
 			id="student_photo"
 			autocomplete="off"
+			onchange="checkFileSize()"
 		/>
 	</div>
 	<div class="form-group">
@@ -117,7 +118,9 @@
 	<br />
 	<button
 		type="submit"
+		id="file-submit"
 		class="btn btn-info"
+		onclick="checkFileSize()"
 	>
 		Submit
 	</button>
@@ -129,5 +132,19 @@
 	inputFile.onchange = function () {
 		profilePic.src = URL.createObjectURL(inputFile.files[0]);
 	};
+
+	function checkFileSize() {
+		var maxSize = 1024 * 1024; // 1 MB (you can adjust this value)
+
+		if (inputFile.files.length > 0) {
+			var fileSize = inputFile.files[0].size;
+
+			if (fileSize > maxSize) {
+				alert("File size exceeds the limit of 1 MB.");
+				inputFile.value = ""; // Clear the file input
+				profilePic.src = "../static/src/default_photo.jpg"; // Reset the image source to default
+			}
+		}
+	}
 </script>
 {% endblock %}

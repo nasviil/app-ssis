@@ -9,7 +9,7 @@ load_dotenv()
 
 def create_app():
     app = Flask(__name__)
-    app.config.from_object(Config)
+    app.config.from_object(Config)  # Set the maximum content length for file uploads
     mysql.init_app(app)
 
     cloudinary_config(

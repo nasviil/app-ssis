@@ -5,6 +5,7 @@ import cloudinary.uploader
 from werkzeug.utils import secure_filename
 
 ALLOWED_EXTENSIONS = {'png', 'jpg'}
+MAX_FILE_SIZE = 1 * 1024 * 1024
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -38,6 +39,9 @@ def add_student():
                     if 'student_photo' in request.files:
                         uploaded_file = request.files['student_photo']
                         if uploaded_file and allowed_file(uploaded_file.filename):
+                            if uploaded_file.content_length > MAX_FILE_SIZE:
+                                flash('File size exceeds the limit of 1MB. Please choose a smaller file.', category='error')
+                                return redirect(url_for('student.add_student'))
                             cloudinary_response = cloudinary.uploader.upload(uploaded_file)
                             cloudinary_url = cloudinary_response.get('secure_url', '')
 
@@ -54,7 +58,7 @@ def add_student():
                             flash('Student added.', category='success')
                             return redirect(url_for('student.student_home'))
                         else:
-                            flash('Invalid file format. Please upload a .png or .jpg image.', category='error')
+                            flash('Error uploading student. Invalid file format.', category='error')
                             return redirect(url_for('student.add_student'))
 
                 except Exception as e:
