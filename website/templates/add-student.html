@@ -24,7 +24,7 @@
 			class="form-control"
 			id="student_photo"
 			autocomplete="off"
-			onchange="checkFileSize()"
+			onchange="checkFileSize(); checkFileFormat()"
 		/>
 	</div>
 	<div class="form-group">
@@ -129,9 +129,10 @@
 	let profilePic = document.getElementById("profile-pic");
 	let inputFile = document.getElementById("student_photo");
 
-	inputFile.onchange = function () {
+	function handleFileSelect() {
 		profilePic.src = URL.createObjectURL(inputFile.files[0]);
-	};
+		checkFileSize();
+	}
 
 	function checkFileSize() {
 		var maxSize = 1024 * 1024; // 1 MB (you can adjust this value)
@@ -141,6 +142,19 @@
 
 			if (fileSize > maxSize) {
 				alert("File size exceeds the limit of 1 MB.");
+				inputFile.value = ""; // Clear the file input
+				profilePic.src = "../static/src/default_photo.jpg"; // Reset the image source to default
+			}
+		}
+	}
+
+	function checkFileFormat() {
+		if (inputFile.files.length > 0) {
+			var allowedTypes = ["image/jpeg", "image/png", "image/jpg"];
+			var fileType = inputFile.files[0].type;
+
+			if (!allowedTypes.includes(fileType)) {
+				alert("Invalid file type. Please upload a .jpg or .png image.");
 				inputFile.value = ""; // Clear the file input
 				profilePic.src = "../static/src/default_photo.jpg"; // Reset the image source to default
 			}

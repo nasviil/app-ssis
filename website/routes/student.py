@@ -58,7 +58,7 @@ def add_student():
                             flash('Student added.', category='success')
                             return redirect(url_for('student.student_home'))
                         else:
-                            flash('Error uploading student. Invalid file format.', category='error')
+                            flash('Error uploading student. Invalid file format. Use jpg or png.', category='error')
                             return redirect(url_for('student.add_student'))
 
                 except Exception as e:
