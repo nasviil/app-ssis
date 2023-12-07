@@ -5,6 +5,14 @@
 <form method="POST" enctype="multipart/form-data">
 	<h3 class="heading-add">Edit Student</h3>
 	<div class="form-group">
+		<div class="photo-container-add">
+			<img
+				src="{{ student.cloudinary_url }}"
+				alt="Student Photo"
+				id="profile-pic"
+				class="student-photo"
+			/>
+		</div>
 		<label for="student_photo">Photo</label>
 		<input
 			type="file"
@@ -84,4 +92,12 @@
 	<br />
 	<button type="Submit">Submit</button>
 </form>
+<script>
+	let profilePic = document.getElementById("profile-pic");
+	let inputFile = document.getElementById("student_photo");
+
+	inputFile.onchange = function () {
+		profilePic.src = URL.createObjectURL(inputFile.files[0]);
+	};
+</script>
 {% endblock %}

@@ -131,6 +131,10 @@ def search_student():
         return redirect(url_for('student.student_home'))
 
     students = student_model.search_students(query)
+    print(students)
 
     if not students:
         flash('No results found for the search query.', category='info')
+
+    return render_template('page-student.html', students=students)
+

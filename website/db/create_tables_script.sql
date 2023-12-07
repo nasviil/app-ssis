@@ -18,5 +18,6 @@ CREATE TABLE IF NOT EXISTS student (
     gender VARCHAR(16) NOT NULL,
     year INT NOT NULL,
     course_id INT,
-    FOREIGN KEY (course_id) REFERENCES course(id) ON DELETE CASCADE
+    FOREIGN KEY (course_id) REFERENCES course(id) ON DELETE CASCADE,
+    cloudinary_url VARCHAR(255)
 );

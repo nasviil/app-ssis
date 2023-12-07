@@ -84,19 +84,21 @@ class Student:
     @classmethod
     def search_students(cls, query):
         SELECT_SQL = f"""
-            SELECT student.*, course.course_name AS course_name, college.college_code AS college_code
+            SELECT student.id, student.student_id, student.first_name, student.last_name,
+                student.gender, student.year, course.course_name AS course_name, course.course_code AS course_code,
+                college.college_code AS college_code
             FROM {cls.__tablename__}
             LEFT JOIN course ON student.course_id = course.id
             LEFT JOIN college ON course.college_id = college.id
-            WHERE student.student_id LIKE %s 
+            WHERE (student.student_id LIKE %s OR student.year = %s)
                 OR student.first_name LIKE %s 
                 OR student.last_name LIKE %s 
                 OR (student.gender = %s) 
-                OR student.year LIKE %s 
                 OR course.course_name LIKE %s
                 OR college.college_code LIKE %s
+                OR course.course_code LIKE %s
         """
         cur = mysql.connection.cursor(dictionary=True)
-        cur.execute(SELECT_SQL, (f'%{query}%', f'%{query}%', f'%{query}%', query, f'%{query}%', f'%{query}%', f'%{query}%'))
+        cur.execute(SELECT_SQL, (f'%{query}%', int(query), f'%{query}%', f'%{query}%', query, f'%{query}%', f'%{query}%', f'%{query}%'))
         students = cur.fetchall()
         return students
