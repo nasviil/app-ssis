@@ -90,15 +90,16 @@ class Student:
             FROM {cls.__tablename__}
             LEFT JOIN course ON student.course_id = course.id
             LEFT JOIN college ON course.college_id = college.id
-            WHERE (student.student_id LIKE %s OR student.year = %s)
+            WHERE student.student_id LIKE %s
                 OR student.first_name LIKE %s 
-                OR student.last_name LIKE %s 
+                OR student.last_name LIKE %s
+                OR student.year LIKE %s
                 OR (student.gender = %s) 
                 OR course.course_name LIKE %s
                 OR college.college_code LIKE %s
                 OR course.course_code LIKE %s
         """
         cur = mysql.connection.cursor(dictionary=True)
-        cur.execute(SELECT_SQL, (f'%{query}%', int(query), f'%{query}%', f'%{query}%', query, f'%{query}%', f'%{query}%', f'%{query}%'))
+        cur.execute(SELECT_SQL, (f'%{query}%', f'%{query}%', f'%{query}%',f'%{query}%', query, f'%{query}%', f'%{query}%', f'%{query}%'))
         students = cur.fetchall()
         return students
